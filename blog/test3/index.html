@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog: Test - AstraVulpis</title>
+    <meta name="title" content="Test3 blog post">
+    <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.">
+    <meta name="rating" content="★★★★☆">
+    <meta name="difficulty" content="hard">
+    <meta name="tags" content="tag10, tag7, tag11, tag4">
+
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+
+    <header>
+        <nav class="header-nav">
+            <div class="nav-left">
+                <a href="../../">Home</a>
+            </div>
+            <div class="nav-right">
+                <a href="../../blog/">Blog</a>
+                <a href="../../ctfs/">CTFs</a>
+                <a href="../../labs/">Labs</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="post-container">
+        <a href="../../blog/" class="back-link">&larr; back</a>
+        <article>
+            <header class="post-header">
+                <h1>Test</h1>
+
+                <div class="post-meta-bar">
+                    <div class="post-meta-details">
+                        <time datetime="2026-08-18">Aug. 18, 2026</time>
+                        <span>•</span>
+                        <span><strong>Difficulty:</strong> Easy</span>
+                        <span>•</span>
+                        <span><strong>Rating:</strong> ★☆☆☆☆</span>
+                    </div>
+                    <div class="info-tags">
+                        <strong>Tags:</strong>
+                        <span class="tag-card">infosec,</span>
+                        <span class="tag-card">gdpr,</span>
+                        <span class="tag-card">siem,</span>
+                        <span class="tag-card">zerotrust</span>
+                    </div>
+                </div>
+            </header>
+
+            <section class="post-body">
+                <h2>1. Enumeration</h2>
+                <p>Starting off with an Nmap scan to discover open ports and available services on the target machine.</p>
+
+                <pre><code>nmap -sC -sV -oA nmap/doctor 10.10.10.209</code></pre>
+
+                <h2>2. Initial Foothold</h2>
+                <p>Analyzing the web application hosted on port 80 revealed a user registration portal vulnerable to Server-Side Template Injection (SSTI).</p>
+
+                <h2>3. Privilege Escalation</h2>
+                <p>After acquiring a low-privilege shell, inspecting the local log files in <code>/var/log/apache2/</code> exposed cleartext password credentials.</p>
+
+                <h2>4. Deletion of the system</h2>
+                <p>Once we aquire the password, we send a PHP request to the server with the credentials. In that PHP request, first we disable foreign keys contraints and then drops the table using:</p>
+
+                <pre><code>EXEC sp_msforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all"</br>EXEC sp_MSforeachtable @command1 = "DROP TABLE ?"</code></pre>
+
+                <p>This enables us to iterates through every table and drops them.</p>
+                <p>Simple in surface, it destroys everything in the database.</p>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-socials">
+            <a href="https://github.com/astravulpis" target="_blank" title="Github">
+                <img src="../../img/github.png">
+            </a>
+        </div>
+        <p>© 2026 - astravulpis</p>
+    </footer>
+
+    <script src="../../js/main.js"></script>
+</body>
+</html>
