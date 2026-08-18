@@ -53,26 +53,16 @@ function searchCards() {
                 post.title.toLowerCase().includes(query.toLowerCase())
             );
 
-
             posts.forEach(post => {
                 const div = document.createElement('div');
-                div.className = 'card-div';
-
-                const tags_html = post.tags.map((tag, index) => {
-                    const comma = (index < post.tags.length - 1)? ',' : '';
-                    return `<span class="tag-card">${tag}${comma}</span>`;
-                }).join(' ');
+                div.className = 'result-card';
 
                 div.innerHTML = `
-                    <div class="card-content">
-                        <section class="card-content-info search-result-info">
-                            <a href=${post.link}><h2>${post.title}</h2></a>
-                            <p class="info-description">${post.description}</p>
-                        </section>
-                    </div>
-                    <div class="card-date-wrapper search-result-date">
+                    <div class="search-result-info">
+                        <a href=${post.link}><h2>${post.title}</h2></a>
                         <time datetime="${post.dateIso}">${post.dateFormatted}</time>
                     </div>
+                    <p class="info-description">${post.description}</p>
                 `;
 
                 container.appendChild(div);
