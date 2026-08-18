@@ -21,7 +21,7 @@ const postDirs = items.filter(item => item.isDirectory());
 
 const updatedPosts = [];
 
-const debug = true;
+const debug = false;
 
 postDirs.forEach(dir => {
     if (!dir.name.startsWith('.') || debug) {

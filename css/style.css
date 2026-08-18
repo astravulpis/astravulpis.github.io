@@ -5,7 +5,7 @@
     --background-dark: #121212;
     --background-card: #181818;
     --text-primary: #ffffff;
-    --text-orange: #de5900ff;
+    --text-link: #de5900ff;
     --text-secondary: #a0a0a0;
     --text-muted: #666666;
     --border-subtle: #242424;
@@ -67,7 +67,7 @@ body {
 }
 
 .links a {
-    color: var(--text-orange);
+    color: var(--text-link);
     font-size: 1.5rem;
 }
 
@@ -341,6 +341,12 @@ footer {
     margin-bottom: 8px;
 }
 
+.post-body a {
+    color: var(--text-link);
+    text-decoration: none;
+    font-weight: 200;
+}
+
 /* Code & Preformatted Blocks */
 .post-body code {
     background-color: var(--background-card);
@@ -366,6 +372,7 @@ footer {
     border: none;
     padding: 0;
 }
+
 
 /* ==========================================================================
                                Search section
