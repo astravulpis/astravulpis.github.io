@@ -1,17 +1,102 @@
-document.addEventListener('DOMContentLoaded', () => {
+let debounceTimer;
+let posts_data = [];
+
+document.addEventListener('DOMContentLoaded', async () => {
     const container = document.querySelector('.card-listings');
     if (!container) return;
 
+    posts_data = await fetchBlogJSON();
     fetchBlogData(container);
 });
 
-async function fetchBlogData(container) {
+function searchCards() {
+    // const cardContainer = document.querySelector('.card-listings');
+    // const posts = fetchBlogData(cardContainer);
+    const body = document.getElementsByTagName('body')[0];
+
+    if (body.children[0].className === 'search-bg') {
+        body.children[0].remove();
+    }
+    const div = document.createElement('div');
+    div.className = 'search-bg';
+
+    div.innerHTML = `
+        <div class="search-container">
+            <div class="search-input">
+                <input type="text" placeholder="Search.." name="search">
+            </div>
+            <div class="search-result-container"></div>
+        </div>
+    `;
+
+    div.onclick = (event) => {
+        if (event.target === event.currentTarget) {
+            div.remove();
+        }
+    };
+
+
+    body.insertBefore(div, body.children[0]);
+    const input = document.querySelector('.search-input');
+    if (!input) return;
+
+    input.addEventListener("input", (event) => {
+        clearTimeout(debounceTimer);
+
+        debounceTimer = setTimeout(() => {
+            const container = document.querySelector('.search-result-container');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const query = event.target.value.toLowerCase().trim();
+            const posts = posts_data.filter(post =>
+                post.title.toLowerCase().includes(query.toLowerCase())
+            );
+
+
+            posts.forEach(post => {
+                const div = document.createElement('div');
+                div.className = 'card-div';
+
+                const tags_html = post.tags.map((tag, index) => {
+                    const comma = (index < post.tags.length - 1)? ',' : '';
+                    return `<span class="tag-card">${tag}${comma}</span>`;
+                }).join(' ');
+
+                div.innerHTML = `
+                    <div class="card-content">
+                        <section class="card-content-info search-result-info">
+                            <a href=${post.link}><h2>${post.title}</h2></a>
+                            <p class="info-description">${post.description}</p>
+                        </section>
+                    </div>
+                    <div class="card-date-wrapper search-result-date">
+                        <time datetime="${post.dateIso}">${post.dateFormatted}</time>
+                    </div>
+                `;
+
+                container.appendChild(div);
+            });
+
+        }, 200);
+    });
+}
+
+async function fetchBlogJSON() {
     try {
         const result = await fetch('../blog/posts.json');
         if (!result.ok) throw new Error('Failed to load posts data');
 
-        const posts = await result.json();
-        renderCards(posts, container);
+        return await result.json();
+    } catch (e) {
+        console.error('[ERROR] failed to load JSON data:', e);
+        return [];
+    }
+}
+
+async function fetchBlogData(container) {
+    try {
+        renderCards(posts_data, container);
     } catch (e) {
         console.error('Error loading blog posts:', e);
         container.innerHTML = '<p class="info-description">Failed to load blog posts</p>';
@@ -51,5 +136,5 @@ function renderCards(posts, container) {
         `;
 
         container.appendChild(div);
-    })
+    });
 }

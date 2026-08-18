@@ -76,6 +76,21 @@ header {
     font-weight: 700;
 }
 
+.search-icon {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+
+.search-icon:hover {
+    color: var(--text-primary);
+}
+
 .back-link {
     display: inline-block;
     color: var(--text-muted);
@@ -118,8 +133,8 @@ header {
 }
 
 .card-content-info {
-    width: 650px;
     flex-shrink: 0;
+    flex: 1;
 }
 
 .card-content-info h2 {
@@ -305,4 +320,56 @@ footer {
     background: none;
     border: none;
     padding: 0;
+}
+
+/* ==========================================================================
+                               Search section
+   ========================================================================== */
+.search-bg {
+    position: absolute;
+    left: -40px;
+    width: calc(100vw + 40px);
+    height: 100vh;
+    background-color: #181818cc;
+    overflow: hidden;
+}
+
+.search-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #181818dd;
+    border: 1px solid white;
+
+    width: 33vw;
+    height: 33vh;
+    margin: auto;
+
+    top: 33vh;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.search-input {
+    position: relative;
+    margin-top: 2em;
+    border-bottom: 1px solid var(--border-subtle);
+    flex: 1;
+}
+
+.search-input input {
+    width: 99%;
+    height: 2vh;
+}
+
+.search-result-container {
+    flex: 4;
+    margin-bottom: 2em;
+}
+
+.search-result-info {
+    flex: 1;
+}
+.search-result-date {
+    flex: 3;
 }

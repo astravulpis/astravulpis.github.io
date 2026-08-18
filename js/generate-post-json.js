@@ -21,32 +21,36 @@ const postDirs = items.filter(item => item.isDirectory());
 
 const updatedPosts = [];
 
+const debug = true;
+
 postDirs.forEach(dir => {
-    const link = path.join(dir.name, '/');
-    const indexPath = path.join(targetDir, link, 'index.html');
-    const html = fs.readFileSync(indexPath, 'utf8');
+    if (!dir.name.startsWith('.') || debug) {
+        const link = path.join(dir.name, '/');
+        const indexPath = path.join(targetDir, link, 'index.html');
+        const html = fs.readFileSync(indexPath, 'utf8');
 
-    const title    = retrieveTitle(html);
-    const desc     = retrieveMeta(html, 'description') || '';
-    const rating   = retrieveMeta(html, 'rating') || '★☆☆☆☆';
-    const diff     = retrieveMeta(html, 'difficulty') || 'N/A';
-    const tagsHtml = retrieveMeta(html, 'tags') || '';
-    const tags     = (tagsHtml)? tagsHtml.split(',').map(tag => tag.trim()) : [];
-    const timeData = retrieveDateInfo(html) || {
-        dateFormatted: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric' }),
-        dateIso: new Date().toISOString().split('T')[0]
-    };
+        const title    = retrieveMeta(html, 'title') || retrieveTitle(html);
+        const desc     = retrieveMeta(html, 'description') || '';
+        const rating   = retrieveMeta(html, 'rating') || '★☆☆☆☆';
+        const diff     = retrieveMeta(html, 'difficulty') || 'N/A';
+        const tagsHtml = retrieveMeta(html, 'tags') || '';
+        const tags     = (tagsHtml)? tagsHtml.split(',').map(tag => tag.trim()) : [];
+        const timeData = retrieveDateInfo(html) || {
+            dateFormatted: new Date().toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric' }),
+            dateIso: new Date().toISOString().split('T')[0]
+        };
 
-    updatedPosts.push({
-        link: link,
-        title: title,
-        description: desc,
-        rating: rating,
-        difficulty: diff,
-        tags: tags,
-        dateFormatted: timeData.dateFormatted,
-        dateIso: timeData.dateIso
-    });
+        updatedPosts.push({
+            link: link,
+            title: title,
+            description: desc,
+            rating: rating,
+            difficulty: diff,
+            tags: tags,
+            dateFormatted: timeData.dateFormatted,
+            dateIso: timeData.dateIso
+        });
+    }
 });
 
 function retrieveMeta(html, name) {

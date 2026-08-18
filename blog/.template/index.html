@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog: Test - AstraVulpis</title>
-    <meta name="title" content="Test blog post">
+    <meta name="title" content="Template blog post">
     <meta name="description" content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.">
     <meta name="rating" content="★☆☆☆☆">
     <meta name="difficulty" content="Easy">
-    <meta name="tags" content="infosec, gdpr, siem, zerotrust">
+    <meta name="tags" content="tag1, tag2, tag3, tag4, tag5">
 
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/style.css">
@@ -36,7 +36,7 @@
 
                 <div class="post-meta-bar">
                     <div class="post-meta-details">
-                        <time datetime="2026-08-18">Aug. 18, 2026</time>
+                        <time datetime="1997-01-01">Aug. 18, 2026</time>
                         <span>•</span>
                         <span><strong>Difficulty:</strong> Easy</span>
                         <span>•</span>
@@ -44,33 +44,20 @@
                     </div>
                     <div class="info-tags">
                         <strong>Tags:</strong>
-                        <span class="tag-card">infosec,</span>
-                        <span class="tag-card">gdpr,</span>
-                        <span class="tag-card">siem,</span>
-                        <span class="tag-card">zerotrust</span>
+                        <span class="tag-card">tag1,</span>
+                        <span class="tag-card">tag2,</span>
+                        <span class="tag-card">tag3,</span>
+                        <span class="tag-card">tag4</span>
+                        <span class="tag-card">tag5</span>
                     </div>
                 </div>
             </header>
 
             <section class="post-body">
-                <h2>1. Enumeration</h2>
-                <p>Starting off with an Nmap scan to discover open ports and available services on the target machine.</p>
-
-                <pre><code>nmap -sC -sV -oA nmap/doctor 10.10.10.209</code></pre>
-
-                <h2>2. Initial Foothold</h2>
-                <p>Analyzing the web application hosted on port 80 revealed a user registration portal vulnerable to Server-Side Template Injection (SSTI).</p>
-
-                <h2>3. Privilege Escalation</h2>
-                <p>After acquiring a low-privilege shell, inspecting the local log files in <code>/var/log/apache2/</code> exposed cleartext password credentials.</p>
-
-                <h2>4. Deletion of the system</h2>
-                <p>Once we aquire the password, we send a PHP request to the server with the credentials. In that PHP request, first we disable foreign keys contraints and then drops the table using:</p>
-
-                <pre><code>EXEC sp_msforeachtable "ALTER TABLE ? NOCHECK CONSTRAINT all"</br>EXEC sp_MSforeachtable @command1 = "DROP TABLE ?"</code></pre>
-
-                <p>This enables us to iterates through every table and drops them.</p>
-                <p>Simple in surface, it destroys everything in the database.</p>
+                <h2>1. Using code with pre</h2>
+                <p>To use code block you use the <code>&lt;pre&gt;&lt;code&gt;&lt;/code&gt;&lt;pre&gt;</code>. Code inside has to be on one line. if you need to break a newline use: <code>&lt;/br&gt;</code>.
+                <pre><code>echo "dummy text"</code></pre>
+                <pre><code>echo "Lorem ipsum dolor sit amet"</br>grep "nologin" /etc/passwd</code></pre>
             </section>
         </article>
     </main>

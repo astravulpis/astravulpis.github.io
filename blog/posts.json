@@ -1,8 +1,8 @@
 [
   {
     "link": "test/",
-    "title": "Blog: Test - AstraVulpis",
-    "description": "Initial foothold via exposed credentials, then pivoting through a vulnerable service to gain root.",
+    "title": "Test blog post",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
     "rating": "★☆☆☆☆",
     "difficulty": "Easy",
     "tags": [
@@ -13,5 +13,21 @@
     ],
     "dateFormatted": "Aug. 18, 2026",
     "dateIso": "2026-08-18"
+  },
+  {
+    "link": ".template/",
+    "title": "Template blog post",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "rating": "★☆☆☆☆",
+    "difficulty": "Easy",
+    "tags": [
+      "tag1",
+      "tag2",
+      "tag3",
+      "tag4",
+      "tag5"
+    ],
+    "dateFormatted": "Aug. 18, 2026",
+    "dateIso": "1997-01-01"
   }
 ]
