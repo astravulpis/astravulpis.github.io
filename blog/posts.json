@@ -1,0 +1,52 @@
+[
+  {
+    "link": "doctor-walkthrough",
+    "title": "HackTheBox: \"Doctor\" Walkthrough",
+    "description": "Initial foothold via exposed credentials, then pivoting through a vulnerable service to gain root.",
+    "rating": "★☆☆☆☆",
+    "difficulty": "Easy",
+    "tags": ["infosec", "gdpr", "siem", "zerotrust"],
+    "dateFormatted": "Aug. 18, 2026",
+    "dateIso": "2026-08-18"
+  },
+  {
+    "link": "binary-exploitation-101",
+    "title": "CTF: Binary Exploitation 101 (Buffer Overflow)",
+    "description": "A step-by-step lab covering stack layout, EIP overwrite, and shellcode placement for beginners.",
+    "rating": "★★☆☆☆",
+    "difficulty": "Medium",
+    "tags": ["infosec", "gdpr", "siem", "zerotrust"],
+    "dateFormatted": "Jul. 7, 2026",
+    "dateIso": "2026-07-07"
+  },
+  {
+    "link": "sqli-union-error",
+    "title": "Web Exploitation: SQL Injection (Union + Error)",
+    "description": "Notes on identifying injection points, extracting schema, and bypassing WAF-like filtering.",
+    "rating": "★★★☆☆",
+    "difficulty": "Intermediate",
+    "tags": ["infosec", "gdpr", "siem", "zerotrust"],
+    "dateFormatted": "May 25, 2025",
+    "dateIso": "2025-05-25"
+  },
+  {
+    "link": "active-directory-recon",
+    "title": "Lab: Active Directory Recon & Lateral Movement",
+    "description": "A raw, utilitarian walkthrough: enum, password spraying, and moving laterally without polish.",
+    "rating": "★★★★☆",
+    "difficulty": "Hard",
+    "tags": ["infosec", "gdpr", "siem", "zerotrust"],
+    "dateFormatted": "Dec. 21, 2025",
+    "dateIso": "2025-12-21"
+  },
+  {
+    "link": "cryptography-basics",
+    "title": "CTF: Cryptography Basics (RSA, AES, XOR)",
+    "description": "Quick reference for common crypto challenges: key sizes, modes, and how to spot weak implementations.",
+    "rating": "★★★★★",
+    "difficulty": "Expert",
+    "tags": ["infosec", "gdpr", "siem", "zerotrust"],
+    "dateFormatted": "Sep. 3, 2025",
+    "dateIso": "2025-09-03"
+  }
+]
